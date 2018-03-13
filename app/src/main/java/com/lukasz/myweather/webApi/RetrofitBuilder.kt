@@ -1,4 +1,4 @@
-package com.lukasz.myweather
+package com.lukasz.myweather.webApi
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

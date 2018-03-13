@@ -1,4 +1,4 @@
-package com.lukasz.myweather;
+package com.lukasz.myweather.webApi;
 
 import com.lukasz.myweather.POJO.WeekWeather;
 
