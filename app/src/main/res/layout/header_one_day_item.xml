@@ -29,12 +29,12 @@
                     android:layout_marginStart="64dp"
                     android:text="Today"
                     android:textSize="24sp"
-                    app:layout_constraintStart_toEndOf="@+id/weatherIV"
+                    app:layout_constraintStart_toEndOf="@+id/weatherDayIV"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="4dp" />
 
                 <ImageView
-                    android:id="@+id/weatherIV"
+                    android:id="@+id/weatherDayIV"
                     android:layout_width="142dp"
                     android:layout_height="132dp"
                     android:layout_marginLeft="10dp"
@@ -53,7 +53,7 @@
                     android:text="Deccription"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/weatherIV" />
+                    app:layout_constraintTop_toBottomOf="@+id/weatherDayIV" />
 
                 <TextView
                     android:id="@+id/dayTempTV"
@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:text="18"
                     android:textSize="50sp"
-                    app:layout_constraintStart_toEndOf="@+id/weatherIV"
+                    app:layout_constraintStart_toEndOf="@+id/weatherDayIV"
                     android:layout_marginStart="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp"
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:text="13"
                     android:textSize="30sp"
-                    app:layout_constraintStart_toEndOf="@+id/weatherIV"
+                    app:layout_constraintStart_toEndOf="@+id/weatherDayIV"
                     android:layout_marginStart="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp"

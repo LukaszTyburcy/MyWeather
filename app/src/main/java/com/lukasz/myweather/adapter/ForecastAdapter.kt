@@ -13,7 +13,7 @@ import com.lukasz.myweather.data.AdapterWeatherData
  * Created by Lukasz on 2018-03-08.
 Upload Picture
  */
-class ForecastAdapter(val list:ArrayList<AdapterWeatherData>) : RecyclerView.Adapter<ForecastAdapter.ForecastAdapterItemViewHolder>() {
+class ForecastAdapter(val list:ArrayList<AdapterWeatherData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val TYPE_HEADER = 0
     private val TYPE_ITEM = 1
@@ -22,13 +22,17 @@ class ForecastAdapter(val list:ArrayList<AdapterWeatherData>) : RecyclerView.Ada
         return list.size
     }
 
-    override fun onBindViewHolder(holder: ForecastAdapterItemViewHolder?, position: Int) {
-        holder?.bindItems((list[position]))
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+        if(holder is ForecastAdapterItemViewHolder){
+            holder.bindItems(list[position])
+        } else if(holder is ForecastAdapterHeaderViewHolder){
+            holder.bindItems(list[position])
+        }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ForecastAdapterItemViewHolder {
-        if(viewType == TYPE_HEADER) {val v = LayoutInflater.from(parent?.context).inflate(R.layout.one_day_item,parent,false)
-            return ForecastAdapterItemViewHolder(v)}
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder? {
+        if(viewType == TYPE_HEADER) {val v = LayoutInflater.from(parent?.context).inflate(R.layout.header_one_day_item,parent,false)
+            return ForecastAdapterHeaderViewHolder(v)}
         if(viewType == TYPE_ITEM) {val v = LayoutInflater.from(parent?.context).inflate(R.layout.one_day_item,parent,false)
             return ForecastAdapterItemViewHolder(v)}
         throw RuntimeException("there is no type that matches the type $viewType + make sure your using types correctly")
@@ -36,12 +40,23 @@ class ForecastAdapter(val list:ArrayList<AdapterWeatherData>) : RecyclerView.Ada
 
 
     class ForecastAdapterItemViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-
         fun bindItems(data: AdapterWeatherData){
             val description: TextView = itemView.findViewById(R.id.weatherDescItemTV)
             val temperatureDay: TextView = itemView.findViewById(R.id.tempDayItemTV)
             val temperatureNight: TextView = itemView.findViewById(R.id.tempNightItemTV)
-            val weatherIcon: ImageView = itemView.findViewById(R.id.weatherIV)
+            val weatherIcon: ImageView = itemView.findViewById(R.id.weatherDayIV)
+            description.text = data.weatherDecription
+            temperatureDay.text = data.dayTemperature.toString()
+            temperatureNight.text = data.nightTemperture.toString()
+            weatherIcon.setImageDrawable(data.weatherIcon)
+        }
+    }
+    class ForecastAdapterHeaderViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+        fun bindItems(data: AdapterWeatherData){
+            val description: TextView = itemView.findViewById(R.id.weatherDescTV)
+            val temperatureDay: TextView = itemView.findViewById(R.id.dayTempTV)
+            val temperatureNight: TextView = itemView.findViewById(R.id.nightTempTV)
+            val weatherIcon: ImageView = itemView.findViewById(R.id.weatherDayIV)
             description.text = data.weatherDecription
             temperatureDay.text = data.dayTemperature.toString()
             temperatureNight.text = data.nightTemperture.toString()
