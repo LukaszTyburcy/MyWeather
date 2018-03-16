@@ -10,70 +10,48 @@ import com.google.gson.annotations.SerializedName;
 
 public class Weather {
 
-    @SerializedName("day")
+    @SerializedName("id")
     @Expose
-    private Double day;
-    @SerializedName("min")
+    private Integer id;
+    @SerializedName("main")
     @Expose
-    private Double min;
-    @SerializedName("max")
+    private String main;
+    @SerializedName("description")
     @Expose
-    private Double max;
-    @SerializedName("night")
+    private String description;
+    @SerializedName("icon")
     @Expose
-    private Double night;
-    @SerializedName("eve")
-    @Expose
-    private Double eve;
-    @SerializedName("morn")
-    @Expose
-    private Double morn;
+    private String icon;
 
-    public Double getDay() {
-        return day;
+    public Integer getId() {
+        return id;
     }
 
-    public void setDay(Double day) {
-        this.day = day;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Double getMin() {
-        return min;
+    public String getMain() {
+        return main;
     }
 
-    public void setMin(Double min) {
-        this.min = min;
+    public void setMain(String main) {
+        this.main = main;
     }
 
-    public Double getMax() {
-        return max;
+    public String getDescription() {
+        return description;
     }
 
-    public void setMax(Double max) {
-        this.max = max;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Double getNight() {
-        return night;
+    public String getIcon() {
+        return icon;
     }
 
-    public void setNight(Double night) {
-        this.night = night;
-    }
-
-    public Double getEve() {
-        return eve;
-    }
-
-    public void setEve(Double eve) {
-        this.eve = eve;
-    }
-
-    public Double getMorn() {
-        return morn;
-    }
-
-    public void setMorn(Double morn) {
-        this.morn = morn;
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }

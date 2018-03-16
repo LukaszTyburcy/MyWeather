@@ -1,6 +1,8 @@
 package com.lukasz.myweather
 
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -22,7 +24,6 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,15 +36,15 @@ class MainActivity : AppCompatActivity() {
                 Log.d("ERROR", t?.localizedMessage)
             }
 
+            @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onResponse(call: Call<WeekWeather>?, response: Response<WeekWeather>?) {
                 val weatherList = ArrayList(response?.body()?.list)
                 val simpleWeather = ArrayList<AdapterWeatherData>()
-                (0..6).mapTo(simpleWeather) { AdapterWeatherData(weatherList[it].clouds.toString(), weatherList[it].deg.toString()) }
+                (0..6).mapTo(simpleWeather) { AdapterWeatherData(weatherList[it].weather[0].description, WeatherUtils().KelwinToCelsius(weatherList[it].temp.day).toInt(),WeatherUtils().KelwinToCelsius(weatherList[it].temp.night).toInt(),WeatherUtils().getIconWeatherCondition(weatherList[it].weather[0].id,applicationContext))}
                 loadingIndicatorPB.visibility = View.INVISIBLE
                 setMyAdapter(recyclerView,simpleWeather)
             }
         })
-
     }
 
     private fun getDatabodyCall(client : WebService, id : Int) : Call<WeekWeather>{
@@ -74,5 +75,4 @@ class MainActivity : AppCompatActivity() {
         val adapter = ForecastAdapter(list)
         recyclerView.adapter = adapter
     }
-
 }

@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">MyWeather</string>
     <string name="refresh">Refresh</string>
+
+    <string name="condition_201"> Burza z deszczem </string>
+    <string name="condition_211"> Burza z piorunami </string>
+    <string name="condition_301"> Mżawka </string>
+    <string name="condition_500"> Lekki deszcz </string>
+    <string name="condition_501"> Umiarkowane opady </string>
+    <string name="condition_502"> Ulewny deszcz </string>
+    <string name="condition_601"> Śnieg </string>
+    <string name="condition_611"> Śnieg z deszczem </string>
+    <string name="condition_801"> Zchmurzenie </string>
+    <string name="condition_800"> Czyste niebo </string>
+    <string name="condition_803"> Silne zachmurzenie </string>
+
 </resources>
