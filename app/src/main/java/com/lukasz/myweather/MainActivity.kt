@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.LinearLayout
 import com.lukasz.myweather.POJO.WeekWeather
 import com.lukasz.myweather.adapter.ForecastAdapter
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        loadingIndicatorPB.visibility = View.VISIBLE
+       // loadingIndicatorPB.visibility = View.VISIBLE
     }
 
     private fun getWeekWeather(call : Call<WeekWeather>, recyclerView: RecyclerView){
@@ -41,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 val weatherList = ArrayList(response?.body()?.list)
                 val simpleWeather = ArrayList<AdapterWeatherData>()
                 (0..6).mapTo(simpleWeather) { AdapterWeatherData(weatherList[it].weather[0].description, WeatherUtils().KelwinToCelsius(weatherList[it].temp.day).toInt(),WeatherUtils().KelwinToCelsius(weatherList[it].temp.night).toInt(),WeatherUtils().getIconWeatherCondition(weatherList[it].weather[0].id,applicationContext))}
-                loadingIndicatorPB.visibility = View.INVISIBLE
+            //    loadingIndicatorPB.visibility = View.INVISIBLE
                 setMyAdapter(recyclerView,simpleWeather)
             }
         })
