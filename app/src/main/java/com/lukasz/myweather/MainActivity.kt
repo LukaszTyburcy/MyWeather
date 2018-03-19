@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<WeekWeather>?, response: Response<WeekWeather>?) {
                 val weatherList = ArrayList(response?.body()?.list)
                 val simpleWeather = ArrayList<AdapterWeatherData>()
-                (0..6).mapTo(simpleWeather) { AdapterWeatherData(weatherList[it].weather[0].description, WeatherUtils().KelwinToCelsius(weatherList[it].temp.day).toInt(),WeatherUtils().KelwinToCelsius(weatherList[it].temp.night).toInt(),WeatherUtils().getIconWeatherCondition(weatherList[it].weather[0].id,applicationContext))}
+                (0..6).mapTo(simpleWeather) { AdapterWeatherData(weatherList[it].weather[0].description, WeatherUtils().KelwinToCelsius(weatherList[it].temp.day).toInt(),WeatherUtils().KelwinToCelsius(weatherList[it].temp.night).toInt(),WeatherUtils().getIconWeatherCondition(weatherList[it].weather[0].id,applicationContext),WeatherUtils().setTime(weatherList[it].dt))}
             //    loadingIndicatorPB.visibility = View.INVISIBLE
                 setMyAdapter(recyclerView,simpleWeather)
             }

@@ -45,10 +45,12 @@ class ForecastAdapter(val list:ArrayList<AdapterWeatherData>) : RecyclerView.Ada
             val temperatureDay: TextView = itemView.findViewById(R.id.tempDayItemTV)
             val temperatureNight: TextView = itemView.findViewById(R.id.tempNightItemTV)
             val weatherIcon: ImageView = itemView.findViewById(R.id.weatherDayIV)
+            val time: TextView = itemView.findViewById(R.id.timeTV)
             description.text = data.weatherDecription
             temperatureDay.text = data.dayTemperature.toString()
             temperatureNight.text = data.nightTemperture.toString()
             weatherIcon.setImageDrawable(data.weatherIcon)
+            time.text = data.time
         }
     }
     class ForecastAdapterHeaderViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){

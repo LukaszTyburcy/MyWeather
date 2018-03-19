@@ -4,6 +4,8 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.support.annotation.RequiresApi
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Created by Lukasz on 2018-03-15.
@@ -11,8 +13,15 @@ Upload Picture
  */
 class WeatherUtils {
 
+    fun setTime(time : Int) : String {
+        var myDate = SimpleDateFormat("yyyy-MM-dd")
+                .format(Date(time * 1000L))
+        return myDate
+    }
+
     fun KelwinToCelsius(temperatureInKelwin: Double): Double {
         return temperatureInKelwin - 273.15
+
     }
 
     fun getStringForWeatherCondition(weatherId: Int): String {
