@@ -9,19 +9,28 @@ import java.util.*
 
 /**
  * Created by Lukasz on 2018-03-15.
-Upload Picture
  */
 class WeatherUtils {
 
     fun setTime(time : Int) : String {
-        var myDate = SimpleDateFormat("yyyy-MM-dd")
+        val myDate = SimpleDateFormat("yyyy-MM-dd")
                 .format(Date(time * 1000L))
         return myDate
     }
 
     fun KelwinToCelsius(temperatureInKelwin: Double): Double {
         return temperatureInKelwin - 273.15
+    }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    fun getIconWeatherCondition (conditionId : Int, context : Context) : Drawable {
+        return when (conditionId) {
+            in 500..504 -> context.getDrawable(R.drawable.rain)
+            800 -> context.getDrawable(R.drawable.clear)
+            in 802..804 -> context.getDrawable(R.drawable.cloudy)
+            in 600..622 -> context.getDrawable(R.drawable.snow)
+            else -> context.getDrawable(R.drawable.abc_ic_clear_material)
+        }
     }
 
     fun getStringForWeatherCondition(weatherId: Int): String {
@@ -40,16 +49,4 @@ class WeatherUtils {
         }
         return stringId.toString()
     }
-
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun getIconWeatherCondition (conditionId : Int, context : Context) : Drawable {
-        return when (conditionId) {
-            in 500..504 -> context.getDrawable(R.drawable.rain)
-            800 -> context.getDrawable(R.drawable.clear)
-            in 802..804 -> context.getDrawable(R.drawable.cloudy)
-            in 600..622 -> context.getDrawable(R.drawable.snow)
-            else -> context.getDrawable(R.drawable.abc_ic_clear_material)
-        }
-    }
-
 }

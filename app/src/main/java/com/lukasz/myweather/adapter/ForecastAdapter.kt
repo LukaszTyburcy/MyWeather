@@ -1,5 +1,6 @@
 package com.lukasz.myweather.adapter
 
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.lukasz.myweather.R
 import com.lukasz.myweather.data.AdapterWeatherData
+import com.lukasz.myweather.fragments.DetailFragment
+
 
 /**
  * Created by Lukasz on 2018-03-08.
@@ -40,6 +43,7 @@ class ForecastAdapter(val list:ArrayList<AdapterWeatherData>) : RecyclerView.Ada
 
 
     class ForecastAdapterItemViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+
         fun bindItems(data: AdapterWeatherData){
             val description: TextView = itemView.findViewById(R.id.weatherDescItemTV)
             val temperatureDay: TextView = itemView.findViewById(R.id.tempDayItemTV)
@@ -51,7 +55,14 @@ class ForecastAdapter(val list:ArrayList<AdapterWeatherData>) : RecyclerView.Ada
             temperatureNight.text = data.nightTemperture.toString()
             weatherIcon.setImageDrawable(data.weatherIcon)
             time.text = data.time
+
+            itemView.setOnClickListener{
+                val activity = itemView.context as AppCompatActivity
+                val myFragment = DetailFragment()
+                activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, myFragment).addToBackStack(null).commit()
+            }
         }
+
     }
     class ForecastAdapterHeaderViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         fun bindItems(data: AdapterWeatherData){
@@ -75,4 +86,6 @@ class ForecastAdapter(val list:ArrayList<AdapterWeatherData>) : RecyclerView.Ada
     private fun isPositionHeader(position: Int): Boolean {
         return position == 0
     }
+
+
 }
