@@ -23,5 +23,24 @@
     <string name="wind_speed">Wind speed</string>
     <string name="cloudiness">Cloudiness</string>
     <string name="today">Today</string>
+    <string name="City">City</string>
+
+    <string-array name="cityName">
+        <item>Moscow</item>
+        <item>Delhi</item>
+        <item>London</item>
+        <item>New York</item>
+        <item>Madrid</item>
+
+    </string-array>
+
+    <string-array name="cityId">
+        <item>524901</item>
+        <item>1273294</item>
+        <item>6058560</item>
+        <item>5106292</item>
+        <item>3996933</item>
+
+    </string-array>
 
 </resources>

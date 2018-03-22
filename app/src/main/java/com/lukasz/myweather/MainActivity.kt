@@ -1,5 +1,4 @@
 package com.lukasz.myweather
-
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
@@ -19,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#303F9F")))
         //loadingIndicatorPB.visibility = View.VISIBLE
         setListFragment()
+
     }
 
     private fun setListFragment() {

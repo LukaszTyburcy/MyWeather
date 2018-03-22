@@ -1,5 +1,6 @@
 package com.lukasz.myweather.fragments
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
@@ -12,6 +13,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import com.lukasz.myweather.CityListActivity
 import com.lukasz.myweather.POJO.WeekWeather
 import com.lukasz.myweather.R
 import com.lukasz.myweather.WeatherUtils
@@ -47,6 +49,10 @@ class WeatherListFragment : Fragment() {
         when(item?.itemId) {
             R.id.refresh -> {refreshWeather()
                 return true}
+            R.id.selectCity -> {
+                startActivity(Intent(activity.applicationContext, CityListActivity::class.java))
+
+            }
         }
         return super.onOptionsItemSelected(item)
     }

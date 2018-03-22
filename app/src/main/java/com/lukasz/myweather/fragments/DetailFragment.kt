@@ -18,8 +18,4 @@ class DetailFragment : Fragment(){
         return inflater?.inflate(R.layout.fragment_detail,container,false)
 
     }
-
-    fun getWeatherData(){
-
-    }
 }
