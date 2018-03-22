@@ -1,5 +1,6 @@
 package com.lukasz.myweather.adapter
 
+import android.content.res.Configuration
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import com.lukasz.myweather.fragments.DetailFragment
  * Created by Lukasz on 2018-03-08.
 Upload Picture
  */
+
 class ForecastAdapter(val list:ArrayList<AdapterWeatherData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val TYPE_HEADER = 0
@@ -39,7 +41,9 @@ class ForecastAdapter(val list:ArrayList<AdapterWeatherData>) : RecyclerView.Ada
         if(viewType == TYPE_ITEM) {val v = LayoutInflater.from(parent?.context).inflate(R.layout.one_day_item,parent,false)
             return ForecastAdapterItemViewHolder(v)}
         throw RuntimeException("there is no type that matches the type $viewType + make sure your using types correctly")
+
     }
+
 
 
     class ForecastAdapterItemViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
@@ -58,8 +62,11 @@ class ForecastAdapter(val list:ArrayList<AdapterWeatherData>) : RecyclerView.Ada
 
             itemView.setOnClickListener{
                 val activity = itemView.context as AppCompatActivity
-                val myFragment = DetailFragment()
-                activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, myFragment).addToBackStack(null).commit()
+                if(activity.resources.configuration.orientation==Configuration.ORIENTATION_PORTRAIT){
+                    val myFragment = DetailFragment()
+                    activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, myFragment).addToBackStack(null).commit()
+                }
+
             }
         }
 

@@ -1,6 +1,10 @@
 package com.lukasz.myweather
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import com.lukasz.myweather.fragments.WeatherListFragment
@@ -8,20 +12,22 @@ import com.lukasz.myweather.fragments.WeatherListFragment
 
 class MainActivity : AppCompatActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // loadingIndicatorPB.visibility = View.VISIBLE
-        setWeatherListFragment()
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#303F9F")))
+        //loadingIndicatorPB.visibility = View.VISIBLE
+        setListFragment()
     }
 
-    private fun setWeatherListFragment() {
-        val manager = supportFragmentManager
-        val transaction = manager.beginTransaction()
-        val fragment = WeatherListFragment()
-        transaction.add(R.id.fragmentContainer, fragment).addToBackStack(null)
-        transaction.commit()
+    private fun setListFragment() {
+        val fm = supportFragmentManager
+        val ft = fm.beginTransaction()
+        val listFragment = WeatherListFragment()
+        ft.add(R.id.fragmentContainer, listFragment).commit()
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val menuInflater = menuInflater

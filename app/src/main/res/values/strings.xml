@@ -13,5 +13,15 @@
     <string name="condition_801"> Zchmurzenie </string>
     <string name="condition_800"> Czyste niebo </string>
     <string name="condition_803"> Silne zachmurzenie </string>
+    <string name="weather_details">WEATHER DETAILS</string>
+    <string name="minimal_daily_temperatu">Minimal daily temperatu</string>
+    <string name="maximal_daily_temperature">Maximal daily temperature</string>
+    <string name="morning_temperature">Morning temperature</string>
+    <string name="evening_temperature">Evening temperature</string>
+    <string name="atmospheric_pressure">Atmospheric pressure</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="cloudiness">Cloudiness</string>
+    <string name="today">Today</string>
 
 </resources>

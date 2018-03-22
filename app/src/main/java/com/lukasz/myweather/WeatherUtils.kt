@@ -13,7 +13,7 @@ import java.util.*
 class WeatherUtils {
 
     fun setTime(time : Int) : String {
-        val myDate = SimpleDateFormat("yyyy-MM-dd")
+        val myDate = SimpleDateFormat("dd-MM-yyyy")
                 .format(Date(time * 1000L))
         return myDate
     }
